@@ -32,7 +32,7 @@ struct ContentView: View {
             List {
                 ForEach(restaurantNames, id: \.self) { restaurantName in
                     HStack {
-                        Image("restaurant")
+                        Image(restaurantName)
                             .resizable()
                             .frame(width: 40, height: 40)
                         Text(restaurantName)
