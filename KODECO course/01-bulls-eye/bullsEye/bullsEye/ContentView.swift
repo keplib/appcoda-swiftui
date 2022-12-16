@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var alertIsVisible: Bool = false
+    @State private var challengeAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -43,9 +44,17 @@ struct ContentView: View {
                 Alert(title: Text("Alert is visible"), message: Text("Alert message"), dismissButton: .default(Text("Dismiss")))
             }
             
-            if (alertIsVisible) {
-                Text("it's true")
+            Button {
+                self.challengeAlert = !self.challengeAlert
+                print(challengeAlert)
+            } label: {
+                Text("Knock Knock")
             }
+            .alert(isPresented: $challengeAlert) {
+                Alert(title: Text("Who is there"), message: Text("Little old lady"), dismissButton: .default(Text("Little lady who?")))
+            }
+            
+           
         }
     }
 }
