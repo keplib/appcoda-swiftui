@@ -14,6 +14,9 @@ struct ContentView: View {
     @State private var sliderValue: Double = 50.0
     @State private var showValue: Double = 50.0
     
+    @State private var game: Game = Game()
+    
+    
     var body: some View {
 
         VStack {
@@ -23,7 +26,7 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
                 .lineSpacing(4.0)
                 .font(.footnote)
-            Text("89")
+            Text(String(game.target))
                 .kerning(-1.0)
                 .font(.largeTitle)
                 .fontWeight(.black)
@@ -47,7 +50,7 @@ struct ContentView: View {
             .alert(isPresented: $alertIsVisible) {
                 var roundedSlider = Int(round(self.sliderValue))
                 return Alert(title: Text("Alert is visible"),
-                             message: Text("The slider's value is \(roundedSlider)"),
+                             message: Text("The slider's value is \(roundedSlider). \n Your points: \(self.game.points(sliderValue: roundedSlider))"),
                       dismissButton: .default(Text("Dismiss")))
             }
             Text("\(self.sliderValue)")
