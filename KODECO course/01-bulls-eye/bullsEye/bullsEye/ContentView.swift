@@ -10,9 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var alertIsVisible: Bool = false
-    @State private var challengeAlert: Bool = false
+    //@State private var challengeAlert: Bool = false
+    @State private var sliderValue: Double = 50.0
+    @State private var showValue: Double = 50.0
     
     var body: some View {
+
         VStack {
             Text(" 🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
                 .kerning(2.0)
@@ -28,7 +31,7 @@ struct ContentView: View {
                 Text("1")
                     .font(.body)
                     .fontWeight(.bold)
-                Slider(value: .constant(50), in: 1.0...100.0)
+                Slider(value: self.$sliderValue, in: 1.0...100.0)
                 Text("100")
                     .font(.body)
                     .fontWeight(.bold)
@@ -36,24 +39,29 @@ struct ContentView: View {
             .padding(.horizontal)
             Button {
                 self.alertIsVisible = !self.alertIsVisible
+                self.showValue = self.sliderValue
                 print(alertIsVisible)
             } label: {
                 Text("Hit me!")
             }
             .alert(isPresented: $alertIsVisible) {
-                Alert(title: Text("Alert is visible"), message: Text("Alert message"), dismissButton: .default(Text("Dismiss")))
+                var roundedSlider = Int(round(self.sliderValue))
+                return Alert(title: Text("Alert is visible"),
+                             message: Text("The slider's value is \(roundedSlider)"),
+                      dismissButton: .default(Text("Dismiss")))
             }
+            Text("\(self.sliderValue)")
             
-            Button {
-                self.challengeAlert = !self.challengeAlert
-                print(challengeAlert)
-            } label: {
-                Text("Knock Knock")
-            }
-            .alert(isPresented: $challengeAlert) {
-                Alert(title: Text("Who is there"), message: Text("Little old lady"), dismissButton: .default(Text("Little lady who?")))
-            }
-            
+//            Button {
+//                self.challengeAlert = !self.challengeAlert
+//                print(challengeAlert)
+//            } label: {
+//                Text("Knock Knock")
+//            }
+//            .alert(isPresented: $challengeAlert) {
+//                Alert(title: Text("Who is there"), message: Text("Little old lady"), dismissButton: .default(Text("Little lady who?")))
+//            }
+            Text("The slider's value is: \(Int(self.showValue))")
            
         }
     }
