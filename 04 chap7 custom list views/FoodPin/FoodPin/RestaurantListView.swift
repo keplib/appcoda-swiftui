@@ -20,7 +20,7 @@ struct RestaurantListView: View {
         List {
             ForEach(restaurantNames.indices, id:\.self) { index in
                 HStack (alignment: .top, spacing: 20) {
-                    Image(restaurantImages[index])
+                    Image("barrafina")
                         .resizable()
                         .frame(width: 120, height: 120)
                         .cornerRadius(20)
