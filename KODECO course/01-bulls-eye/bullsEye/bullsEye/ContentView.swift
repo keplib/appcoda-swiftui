@@ -87,7 +87,13 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.light)
         ContentView()
+            .previewInterfaceOrientation(.landscapeLeft)
+        ContentView()
+            .preferredColorScheme(.dark)
+        ContentView()
+            .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
