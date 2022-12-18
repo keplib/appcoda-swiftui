@@ -24,21 +24,25 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack {
                 Text(" 🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+                    .foregroundColor(Color("TextColor"))
                     .kerning(2.0)
                     .bold()
                     .multilineTextAlignment(.center)
                     .lineSpacing(4.0)
                     .font(.footnote)
                 Text(String(game.target))
+                    .foregroundColor(Color("TextColor"))
                     .kerning(-1.0)
                     .font(.largeTitle)
                     .fontWeight(.black)
                 HStack {
                     Text("1")
+                        .foregroundColor(Color("TextColor"))
                         .font(.body)
                         .fontWeight(.bold)
                     Slider(value: self.$sliderValue, in: 1.0...100.0)
                     Text("100")
+                        .foregroundColor(Color("TextColor"))
                         .font(.body)
                         .fontWeight(.bold)
                 }
@@ -49,7 +53,6 @@ struct ContentView: View {
                     print(alertIsVisible)
                 } label: {
                     Text("Hit me!".uppercased())
-                        
                         .bold()
                         .font(.title3)
                     
