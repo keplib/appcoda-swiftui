@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7409CF27294FC07B0072F604 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409CF26294FC07B0072F604 /* TextViews.swift */; };
 		7485D48E294CAAD700DA57F2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485D48D294CAAD700DA57F2 /* Game.swift */; };
 		7485D496294DE80400DA57F2 /* bullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485D495294DE80400DA57F2 /* bullsEyeTests.swift */; };
 		74881F3A2948ECAA00F47C2D /* bullsEyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74881F392948ECAA00F47C2D /* bullsEyeApp.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7409CF26294FC07B0072F604 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		7485D48D294CAAD700DA57F2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7485D493294DE80400DA57F2 /* bullsEyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bullsEyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7485D495294DE80400DA57F2 /* bullsEyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bullsEyeTests.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				74881F3B2948ECAA00F47C2D /* ContentView.swift */,
 				74881F3D2948ECAA00F47C2D /* Assets.xcassets */,
 				74881F3F2948ECAA00F47C2D /* Preview Content */,
+				7409CF26294FC07B0072F604 /* TextViews.swift */,
 			);
 			path = bullsEye;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74881F3C2948ECAA00F47C2D /* ContentView.swift in Sources */,
+				7409CF27294FC07B0072F604 /* TextViews.swift in Sources */,
 				7485D48E294CAAD700DA57F2 /* Game.swift in Sources */,
 				74881F3A2948ECAA00F47C2D /* bullsEyeApp.swift in Sources */,
 			);

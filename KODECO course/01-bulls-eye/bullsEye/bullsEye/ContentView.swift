@@ -12,8 +12,6 @@ struct ContentView: View {
     @State private var alertIsVisible: Bool = false
     //@State private var challengeAlert: Bool = false
     @State private var sliderValue: Double = 50.0
-    @State private var showValue: Double = 50.0
-    
     @State private var game: Game = Game()
     
     
@@ -23,54 +21,10 @@ struct ContentView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
             VStack {
-                Text(" 🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
-                    .foregroundColor(Color("TextColor"))
-                    .kerning(2.0)
-                    .bold()
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(4.0)
-                    .font(.footnote)
-                Text(String(game.target))
-                    .foregroundColor(Color("TextColor"))
-                    .kerning(-1.0)
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                HStack {
-                    Text("1")
-                        .foregroundColor(Color("TextColor"))
-                        .font(.body)
-                        .fontWeight(.bold)
-                    Slider(value: self.$sliderValue, in: 1.0...100.0)
-                    Text("100")
-                        .foregroundColor(Color("TextColor"))
-                        .font(.body)
-                        .fontWeight(.bold)
-                }
-                .padding()
-                Button {
-                    self.alertIsVisible = !self.alertIsVisible
-                    self.showValue = self.sliderValue
-                    print(alertIsVisible)
-                } label: {
-                    Text("Hit me!".uppercased())
-                        .bold()
-                        .font(.title3)
-                    
-                }
-                .padding(20.0)
-                .background(ZStack {
-                    Color("ButtonColor")
-                    LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
-                })
-                .foregroundColor(.white)
-                .cornerRadius(21)
-                
-                .alert(isPresented: $alertIsVisible) {
-                    var roundedSlider = Int(round(self.sliderValue))
-                    return Alert(title: Text("Alert is visible"),
-                                 message: Text("The slider's value is \(roundedSlider). \n Your points: \(self.game.points(sliderValue: roundedSlider))"),
-                          dismissButton: .default(Text("Dismiss")))
-                }
+                InstructionsView(game: $game)
+                SliderView(sliderValue: $sliderValue)
+                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+               
                 
     //            Button {
     //                self.challengeAlert = !self.challengeAlert
@@ -86,6 +40,69 @@ struct ContentView: View {
         }
     }
 }
+
+struct InstructionsView: View {
+    @Binding var game: Game
+    var body: some View {
+        VStack {
+            InstructionText(text: " 🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+                .padding(.leading, 30.0)
+                .padding(.trailing, 30.0)
+            BigNumberText(text: String(game.target))
+        }
+        
+    }
+}
+
+struct SliderView: View {
+    @Binding var sliderValue: Double
+    var body: some View {
+        HStack {
+            Text("1")
+                .foregroundColor(Color("TextColor"))
+                .font(.body)
+                .fontWeight(.bold)
+            Slider(value: $sliderValue, in: 1.0...100.0)
+            Text("100")
+                .foregroundColor(Color("TextColor"))
+                .font(.body)
+                .fontWeight(.bold)
+        }
+        .padding()
+    }
+}
+
+struct HitMeButton: View {
+    
+    @Binding var alertIsVisible : Bool
+    @Binding var sliderValue: Double
+    @Binding var game: Game
+    
+    var body: some View {
+        Button {
+            alertIsVisible = !alertIsVisible
+        } label: {
+            Text("Hit me!".uppercased())
+                .bold()
+                .font(.title3)
+        }
+        .padding(20.0)
+        .background(ZStack {
+            Color("ButtonColor")
+            LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
+        })
+        .foregroundColor(.white)
+        .cornerRadius(21)
+        
+        .alert(isPresented: $alertIsVisible) {
+            var roundedSlider = Int(round(sliderValue))
+            return Alert(title: Text("Alert is visible"),
+                         message: Text("The slider's value is \(roundedSlider). \n Your points: \(game.points(sliderValue: roundedSlider))"),
+                  dismissButton: .default(Text("Dismiss")))
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
