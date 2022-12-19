@@ -80,9 +80,12 @@ struct HitMeButton: View {
             Color("ButtonColor")
             LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
         })
-        .foregroundColor(.white)
-        .cornerRadius(21)
-        
+        .foregroundColor(Color.white)
+        .cornerRadius(21.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 21.0)
+                .strokeBorder(Color.white, lineWidth: 2.0)
+        )
         .alert(isPresented: $alertIsVisible) {
             var roundedSlider = Int(round(sliderValue))
             return Alert(title: Text("Alert is visible"),
