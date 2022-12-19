@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var alertIsVisible: Bool = false
     //@State private var challengeAlert: Bool = false
     @State private var sliderValue: Double = 50.0
     @State private var game: Game = Game()
     
-    
     var body: some View {
-
         ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
@@ -50,7 +47,6 @@ struct InstructionsView: View {
                 .padding(.trailing, 30.0)
             BigNumberText(text: String(game.target))
         }
-        
     }
 }
 
@@ -58,22 +54,15 @@ struct SliderView: View {
     @Binding var sliderValue: Double
     var body: some View {
         HStack {
-            Text("1")
-                .foregroundColor(Color("TextColor"))
-                .font(.body)
-                .fontWeight(.bold)
+            SliderLabelText(text: "1")
             Slider(value: $sliderValue, in: 1.0...100.0)
-            Text("100")
-                .foregroundColor(Color("TextColor"))
-                .font(.body)
-                .fontWeight(.bold)
+            SliderLabelText(text: "100")
         }
         .padding()
     }
 }
 
 struct HitMeButton: View {
-    
     @Binding var alertIsVisible : Bool
     @Binding var sliderValue: Double
     @Binding var game: Game

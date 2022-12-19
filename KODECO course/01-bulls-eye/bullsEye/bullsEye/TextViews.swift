@@ -33,6 +33,18 @@ struct BigNumberText: View {
     }
 }
 
+struct SliderLabelText: View {
+    var text: String
+    var body: some View {
+        Text(text)
+            .kerning(-1.0)
+            .foregroundColor(Color("TextColor"))
+            .font(.largeTitle)
+            .fontWeight(.black)
+        
+    }
+}
+
 struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
         
