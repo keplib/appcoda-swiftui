@@ -23,21 +23,8 @@ struct RestaurantListView: View {
         
         List {
             ForEach(restaurantNames.indices, id:\.self) { index in
-                HStack (alignment: .top, spacing: 20) {
-                    Image("barrafina")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-                        .cornerRadius(20)
-                    VStack (alignment: .leading) {
-                        Text(restaurantNames[index])
-                            .font(.system(.title2, design: .rounded))
-                        Text(restaurantTypes[index])
-                            .font(.system(.body, design: .rounded))
-                        Text(restaurantLocations[index])
-                            .font(.system(.subheadline, design: .rounded))
-                            .foregroundColor(.gray)
-                    }
-                }
+                FullImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index])
+            
             }
             .listRowSeparator(.hidden)
         }
@@ -52,5 +39,98 @@ struct RestaurantListView_Previews: PreviewProvider {
         
         RestaurantListView()
             .preferredColorScheme(.dark)
+    }
+}
+
+struct BasicTextImageRow: View {
+    var name: String
+    var type: String
+    var location: String
+    
+    @State private var showOptions = false
+    
+    var body: some View {
+        HStack (alignment: .top, spacing: 20) {
+            Image("barrafina")
+                .resizable()
+                .frame( width: 120, height: 118)
+                .cornerRadius(20)
+            VStack (alignment: .leading) {
+                Text(name)
+                    .font(.system(.title2, design: .rounded))
+                Text(location)
+                    .font(.system(.body, design: .rounded))
+                Text(type)
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundColor(.gray)
+               
+            }
+            .padding(.leading, 20)
+        }
+        .onTapGesture {
+            showOptions.toggle()
+            print(String(showOptions))
+        }
+        .actionSheet(isPresented: $showOptions) {
+            ActionSheet(title: Text("What do you want to do?"),
+                        message: nil,
+                        buttons: [
+                            .default(Text("Reserve a table")) {
+                                
+                            },
+                            .default(Text("Mark as favorite")) {
+                                
+                            },
+                            .cancel()
+                        ])
+        }
+    }
+}
+
+struct FullImageRow: View {
+    
+    var name: String
+    var type: String
+    var location: String
+    
+    @State private var showOptions = false
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Image("barrafina")
+                .resizable()
+                .scaledToFill()
+                .frame(height: 200)
+                .cornerRadius(20)
+            VStack(alignment: .leading) {
+                Text(name)
+                    .font(.system(.title2, design: .rounded))
+                Text(location)
+                    .font(.system(.body, design: .rounded))
+                Text(type)
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundColor(.gray)
+                Text(String(showOptions))
+            }
+            .padding(.horizontal)
+            .foregroundColor(.gray)
+        }
+        .onTapGesture {
+            showOptions.toggle()
+            print(String(showOptions))
+        }
+        .actionSheet(isPresented: $showOptions) {
+            ActionSheet(title: Text("What do you want to do?"),
+                        message: nil,
+                        buttons: [
+                            .default(Text("Reserve a table")) {
+                                
+                            },
+                            .default(Text("Mark as favorite")) {
+                                
+                            },
+                            .cancel()
+                        ])
+        }
     }
 }
