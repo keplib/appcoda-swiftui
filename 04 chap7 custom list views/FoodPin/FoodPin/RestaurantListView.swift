@@ -48,6 +48,8 @@ struct BasicTextImageRow: View {
     var location: String
     
     @State private var showOptions = false
+    @State private var showError = false
+    
     
     var body: some View {
         HStack (alignment: .top, spacing: 20) {
@@ -83,6 +85,13 @@ struct BasicTextImageRow: View {
                             },
                             .cancel()
                         ])
+        }
+        .alert(isPresented: $showError) {
+            Alert(title: Text("Not yet available"),
+                  message: Text("Sorry, this feature is nit available yet"),
+                  primaryButton: .default(Text("OK")),
+                  secondaryButton: .cancel())
+        
         }
     }
 }
