@@ -78,7 +78,8 @@ struct BasicTextImageRow: View {
                         message: nil,
                         buttons: [
                             .default(Text("Reserve a table")) {
-                                
+                                self.showError.toggle()
+
                             },
                             .default(Text("Mark as favorite")) {
                                 
