@@ -49,6 +49,7 @@ struct BasicTextImageRow: View {
     
     @State private var showOptions = false
     @State private var showError = false
+    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
     
     
     var body: some View {
