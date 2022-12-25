@@ -25,7 +25,7 @@ struct RestaurantListView: View {
         
         List {
             ForEach(restaurantNames.indices, id:\.self) { index in
-                FullImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index], isFavorite: $restaurantIsFavorites[index])
+                BasicTextImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index], isFavorite: $restaurantIsFavorites[index])
             
             }
             .listRowSeparator(.hidden)
@@ -90,7 +90,7 @@ struct BasicTextImageRow: View {
                                 self.showError.toggle()
 
                             },
-                            .default(Text("Mark as favorite")) {
+                            .default(Text(isFavorite ? "Remove from favorites" :"Mark as favorite")) {
                                 self.isFavorite.toggle()
                             },
                             .cancel()
@@ -159,7 +159,7 @@ struct FullImageRow: View {
                                 self.showError.toggle()
                                 
                             },
-                            .default(Text("Mark as favorite")) {
+                            .default(Text(isFavorite ? "Remove from favorites" :"Mark as favorite")) {
                                 self.isFavorite.toggle()
                             },
                             .cancel()
