@@ -19,11 +19,13 @@ struct RestaurantListView: View {
     
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
+    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
+
     var body: some View {
         
         List {
             ForEach(restaurantNames.indices, id:\.self) { index in
-                FullImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index])
+                BasicTextImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index], isFavorite: $restaurantIsFavorites[index])
             
             }
             .listRowSeparator(.hidden)
@@ -49,7 +51,7 @@ struct BasicTextImageRow: View {
     
     @State private var showOptions = false
     @State private var showError = false
-    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
+    @Binding var isFavorite: Bool
     
     
     var body: some View {
@@ -66,13 +68,20 @@ struct BasicTextImageRow: View {
                 Text(type)
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundColor(.gray)
+                
                
             }
             .padding(.leading, 20)
+            
+            if isFavorite {
+                Spacer()
+                
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.yellow)
+            }
         }
         .onTapGesture {
             showOptions.toggle()
-            print(String(showOptions))
         }
         .actionSheet(isPresented: $showOptions) {
             ActionSheet(title: Text("What do you want to do?"),
@@ -83,18 +92,20 @@ struct BasicTextImageRow: View {
 
                             },
                             .default(Text("Mark as favorite")) {
-                                
+                                self.isFavorite.toggle()
                             },
                             .cancel()
                         ])
         }
         .alert(isPresented: $showError) {
             Alert(title: Text("Not yet available"),
-                  message: Text("Sorry, this feature is nit available yet"),
+                  message: Text("Sorry, this feature is nnot available yet."),
                   primaryButton: .default(Text("OK")),
-                  secondaryButton: .cancel())
-        
+                  secondaryButton: .cancel()
+            )
+
         }
+        
     }
 }
 
@@ -105,6 +116,7 @@ struct FullImageRow: View {
     var location: String
     
     @State private var showOptions = false
+    @State private var showError = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -135,6 +147,7 @@ struct FullImageRow: View {
                         message: nil,
                         buttons: [
                             .default(Text("Reserve a table")) {
+                                self.showError.toggle()
                                 
                             },
                             .default(Text("Mark as favorite")) {
@@ -142,6 +155,14 @@ struct FullImageRow: View {
                             },
                             .cancel()
                         ])
+        }
+        .alert(isPresented: $showError) {
+            Alert(title: Text("Not yet available"),
+                  message: Text("Sorry, this feature is nnot available yet."),
+                  primaryButton: .default(Text("OK")),
+                  secondaryButton: .cancel()
+            )
+
         }
     }
 }
