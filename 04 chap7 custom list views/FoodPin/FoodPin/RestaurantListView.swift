@@ -25,7 +25,7 @@ struct RestaurantListView: View {
         
         List {
             ForEach(restaurantNames.indices, id:\.self) { index in
-                BasicTextImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index], isFavorite: $restaurantIsFavorites[index])
+                FullImageRow(name: restaurantNames[index], type: restaurantTypes[index], location: restaurantLocations[index], isFavorite: $restaurantIsFavorites[index])
             
             }
             .listRowSeparator(.hidden)
@@ -75,7 +75,6 @@ struct BasicTextImageRow: View {
             
             if isFavorite {
                 Spacer()
-                
                 Image(systemName: "heart.fill")
                     .foregroundColor(.yellow)
             }
@@ -117,6 +116,8 @@ struct FullImageRow: View {
     
     @State private var showOptions = false
     @State private var showError = false
+    @Binding var isFavorite: Bool
+     
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -125,18 +126,26 @@ struct FullImageRow: View {
                 .scaledToFill()
                 .frame(height: 200)
                 .cornerRadius(20)
-            VStack(alignment: .leading) {
-                Text(name)
-                    .font(.system(.title2, design: .rounded))
-                Text(location)
-                    .font(.system(.body, design: .rounded))
-                Text(type)
-                    .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(.gray)
-                Text(String(showOptions))
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text(name)
+                        .font(.system(.title2, design: .rounded))
+                    Text(location)
+                        .font(.system(.body, design: .rounded))
+                    Text(type)
+                        .font(.system(.subheadline, design: .rounded))
+                        .foregroundColor(.gray)
+                    Text(String(showOptions))
+                }
+                .padding(.horizontal)
+                .foregroundColor(.gray)
+                
+                if isFavorite {
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.yellow)
+                }
             }
-            .padding(.horizontal)
-            .foregroundColor(.gray)
         }
         .onTapGesture {
             showOptions.toggle()
@@ -151,7 +160,7 @@ struct FullImageRow: View {
                                 
                             },
                             .default(Text("Mark as favorite")) {
-                                
+                                self.isFavorite.toggle()
                             },
                             .cancel()
                         ])
