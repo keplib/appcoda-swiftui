@@ -17,4 +17,9 @@ struct Game {
         let awardedPoints: Int = 100 - difference
         return awardedPoints
     }
+    
+    mutating func startNewRound(points: Int) {
+        self.totalScore = points
+        self.round += 1
+    }
 }
