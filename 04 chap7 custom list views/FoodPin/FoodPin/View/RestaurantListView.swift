@@ -123,6 +123,17 @@ struct BasicTextImageRow: View {
                     Image(systemName: "heart")
                 }
             }
+            
+            Button {
+                self.showOptions.toggle()
+            } label: {
+                HStack {
+                    Text("Share")
+                    Image(systemName: "square.and.arrow.up")
+                }
+
+            }
+            
         }
 //        .onTapGesture {
 //            showOptions.toggle()
@@ -148,6 +159,17 @@ struct BasicTextImageRow: View {
                   secondaryButton: .cancel()
             )
 
+        }
+        .sheet(isPresented: $showOptions) {
+            
+        } content: {
+            let defaultText = "Just checking in at \(restaurant.name)"
+                                
+            if let imageToShare = UIImage(named: restaurant.image) {
+                ActivityView(activityItems: [defaultText, imageToShare])
+            } else {
+                ActivityView(activityItems: [defaultText])
+            }
         }
         
     }
