@@ -28,8 +28,25 @@ struct RestaurantListView: View {
         List {
             ForEach(restaurants.indices, id:\.self) { index in
                 BasicTextImageRow(restaurant: $restaurants[index])
-            
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "heart")
+                        }
+                        .tint(.green)
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .tint(.orange)
+                    }
             }
+            .onDelete(perform: { IndexSet in
+                restaurants.remove(atOffsets: IndexSet)
+            })
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
@@ -87,23 +104,43 @@ struct BasicTextImageRow: View {
                     .foregroundColor(.yellow)
             }
         }
-        .onTapGesture {
-            showOptions.toggle()
+        .contextMenu{
+            
+            Button {
+                self.showError.toggle()
+            } label: {
+                HStack {
+                    Text("Reserve a table")
+                    Image(systemName: "phone")
+                }
+            }
+            
+            Button {
+                self.restaurant.isFavorite.toggle()
+            } label: {
+                HStack {
+                    Text(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite")
+                    Image(systemName: "heart")
+                }
+            }
         }
-        .actionSheet(isPresented: $showOptions) {
-            ActionSheet(title: Text("What do you want to do?"),
-                        message: nil,
-                        buttons: [
-                            .default(Text("Reserve a table")) {
-                                self.showError.toggle()
-
-                            },
-                            .default(Text(restaurant.isFavorite ? "Remove from favorites" :"Mark as favorite")) {
-                                self.restaurant.isFavorite.toggle()
-                            },
-                            .cancel()
-                        ])
-        }
+//        .onTapGesture {
+//            showOptions.toggle()
+//        }
+//        .actionSheet(isPresented: $showOptions) {
+//            ActionSheet(title: Text("What do you want to do?"),
+//                        message: nil,
+//                        buttons: [
+//                            .default(Text("Reserve a table")) {
+//                                self.showError.toggle()
+//
+//                            },
+//                            .default(Text(restaurant.isFavorite ? "Remove from favorites" :"Mark as favorite")) {
+//                                self.restaurant.isFavorite.toggle()
+//                            },
+//                            .cancel()
+//                        ])
+//        }
         .alert(isPresented: $showError) {
             Alert(title: Text("Not yet available"),
                   message: Text("Sorry, this feature is nnot available yet."),
