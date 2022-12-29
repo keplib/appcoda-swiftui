@@ -14,6 +14,8 @@
 		747DD808294E286D0035FBD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 747DD807294E286D0035FBD0 /* Assets.xcassets */; };
 		747DD80B294E286D0035FBD0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 747DD80A294E286D0035FBD0 /* Preview Assets.xcassets */; };
 		748F17E82958F1A80074B830 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748F17E72958F1A80074B830 /* Restaurant.swift */; };
+		74E57AD9295DDD190031DA68 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74E57AD7295DDD190031DA68 /* Nunito-Bold.ttf */; };
+		74E57ADA295DDD190031DA68 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74E57AD8295DDD190031DA68 /* Nunito-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,9 @@
 		747DD807294E286D0035FBD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		747DD80A294E286D0035FBD0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		748F17E72958F1A80074B830 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		74E57AD7295DDD190031DA68 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		74E57AD8295DDD190031DA68 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		74E57ADB295DDDD20031DA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,8 @@
 		747DD802294E286C0035FBD0 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				74E57ADB295DDDD20031DA68 /* Info.plist */,
+				74E57AD5295DDCB70031DA68 /* Resources */,
 				74596E6D2959DEB100329372 /* View */,
 				74596E6C2959DE9600329372 /* Model */,
 				747DD803294E286C0035FBD0 /* FoodPinApp.swift */,
@@ -90,6 +97,23 @@
 				747DD80A294E286D0035FBD0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		74E57AD5295DDCB70031DA68 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				74E57AD6295DDCBD0031DA68 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		74E57AD6295DDCBD0031DA68 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				74E57AD7295DDD190031DA68 /* Nunito-Bold.ttf */,
+				74E57AD8295DDD190031DA68 /* Nunito-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				747DD80B294E286D0035FBD0 /* Preview Assets.xcassets in Resources */,
+				74E57AD9295DDD190031DA68 /* Nunito-Bold.ttf in Resources */,
+				74E57ADA295DDD190031DA68 /* Nunito-Regular.ttf in Resources */,
 				747DD808294E286D0035FBD0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +326,9 @@
 				DEVELOPMENT_TEAM = HJ3HNVNSSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FoodPin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -330,6 +359,9 @@
 				DEVELOPMENT_TEAM = HJ3HNVNSSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FoodPin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
