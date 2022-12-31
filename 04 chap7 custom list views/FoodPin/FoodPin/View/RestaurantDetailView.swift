@@ -12,29 +12,37 @@ struct RestaurantDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack(alignment: .top) {
-            
-            Image("barrafina")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .ignoresSafeArea()
-            
-            Color.black
-                .frame(height: 100)
-                .opacity(0.8)
-                .cornerRadius(20)
-                .padding()
-                .overlay {
-                    VStack(spacing: 5) {
-                        Text(restaurant.name)
-                        Text(restaurant.type)
-                        Text(restaurant.location)
-
+        ScrollView {
+            VStack (alignment: .leading) {
+                Image("barrafina")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(minWidth: 0, maxWidth:  .infinity)
+                    .frame(height: 445)
+                    .overlay {
+                        VStack {
+                            Image(systemName: "heart")
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
+                                .padding()
+                                .font(.system(size:30))
+                                .foregroundColor(.white)
+                                .padding(.top, 40)
+                            
+                            VStack (alignment: .leading, spacing: 5){
+                                Text(restaurant.name)
+                                    .font(.custom("Nunito-Regular", size: 35, relativeTo:.largeTitle))
+                                    .bold()
+                                Text(restaurant.type)
+                                    .font(.system(.headline, design: .rounded))
+                                    .padding(.all, 5)
+                                    .background(Color.black)
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomLeading)
+                            .foregroundColor(.white)
+                            .padding()
+                        }
                     }
-                    .font(.system(.headline, design: .rounded))
-                    .foregroundColor(.white)
-                }
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
