@@ -43,6 +43,8 @@ struct RestaurantDetailView: View {
                         }
                     }
             }
+            Text(restaurant.description)
+                .padding()
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
