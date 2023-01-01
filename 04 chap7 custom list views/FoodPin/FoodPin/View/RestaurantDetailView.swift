@@ -45,16 +45,34 @@ struct RestaurantDetailView: View {
             }
             Text(restaurant.description)
                 .padding()
+            
+            HStack (alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text("ADDRESS")
+                        .font(.system(.headline, design: .rounded))
+                    
+                    Text(restaurant.location)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                
+                VStack(alignment: .leading) {
+                    Text("PHONE")
+                        .font(.system(.headline, design: .rounded))
+                    Text(restaurant.phone)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.horizontal)
         }
+        .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     dismiss()
                 } label: {
-                    Text("\(Image(systemName: "chevron.left")) \(restaurant.name)")
+                    Text("\(Image(systemName: "chevron.left"))")
                 }
-
             }
         }
     }
