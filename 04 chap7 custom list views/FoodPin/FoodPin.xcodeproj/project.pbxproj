@@ -14,6 +14,7 @@
 		747DD808294E286D0035FBD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 747DD807294E286D0035FBD0 /* Assets.xcassets */; };
 		747DD80B294E286D0035FBD0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 747DD80A294E286D0035FBD0 /* Preview Assets.xcassets */; };
 		748F17E82958F1A80074B830 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748F17E72958F1A80074B830 /* Restaurant.swift */; };
+		74BC52032964AF93008F8A30 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BC52022964AF93008F8A30 /* UIColor+Ext.swift */; };
 		74E57AD9295DDD190031DA68 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74E57AD7295DDD190031DA68 /* Nunito-Bold.ttf */; };
 		74E57ADA295DDD190031DA68 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74E57AD8295DDD190031DA68 /* Nunito-Regular.ttf */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 		747DD807294E286D0035FBD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		747DD80A294E286D0035FBD0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		748F17E72958F1A80074B830 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		74BC52022964AF93008F8A30 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		74E57AD7295DDD190031DA68 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		74E57AD8295DDD190031DA68 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		74E57ADB295DDDD20031DA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		747DD802294E286C0035FBD0 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				74BC52012964AF6B008F8A30 /* Extensions */,
 				74E57ADB295DDDD20031DA68 /* Info.plist */,
 				74E57AD5295DDCB70031DA68 /* Resources */,
 				74596E6D2959DEB100329372 /* View */,
@@ -97,6 +100,14 @@
 				747DD80A294E286D0035FBD0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		74BC52012964AF6B008F8A30 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				74BC52022964AF93008F8A30 /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		74E57AD5295DDCB70031DA68 /* Resources */ = {
@@ -191,6 +202,7 @@
 				747DD806294E286C0035FBD0 /* RestaurantListView.swift in Sources */,
 				7465C1AD295C89D500A9F041 /* RestaurantDetailView.swift in Sources */,
 				742AA3C5295B1D3100D28CAA /* ActivityView.swift in Sources */,
+				74BC52032964AF93008F8A30 /* UIColor+Ext.swift in Sources */,
 				747DD804294E286C0035FBD0 /* FoodPinApp.swift in Sources */,
 				748F17E82958F1A80074B830 /* Restaurant.swift in Sources */,
 			);
