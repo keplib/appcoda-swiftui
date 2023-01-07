@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var alertIsVisible: Bool = false
-    //@State private var challengeAlert: Bool = false
     @State private var sliderValue: Double = 50.0
     @State private var game: Game = Game()
     
@@ -18,22 +17,16 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
-                    .padding(.bottom, 100)
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
-               
-                
-    //            Button {
-    //                self.challengeAlert = !self.challengeAlert
-    //                print(challengeAlert)
-    //            } label: {
-    //                Text("Knock Knock")
-    //            }
-    //            .alert(isPresented: $challengeAlert) {
-    //                Alert(title: Text("Who is there"), message: Text("Little old lady"), dismissButton: .default(Text("Little lady who?")))
-    //            }
-               
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                }
             }
-            SliderView(sliderValue: $sliderValue)
+            if !alertIsVisible {
+                SliderView(sliderValue: $sliderValue)
+            }
         }
     }
 }
@@ -87,16 +80,6 @@ struct HitMeButton: View {
             RoundedRectangle(cornerRadius: 21.0)
                 .strokeBorder(Color.white, lineWidth:2.0)
         )
-        .alert(isPresented: $alertIsVisible) {
-            let roundedSlider = Int(round(sliderValue))
-            let points = game.points(sliderValue: roundedSlider)
-            return Alert(title: Text("Alert is visible"),
-                         message: Text("The slider's value is \(roundedSlider). \n Your points: \(points)"),
-                         dismissButton: .default(Text("Dismiss")) {
-                game.startNewRound(points: points)
-            }
-            )
-        }
     }
 }
 
