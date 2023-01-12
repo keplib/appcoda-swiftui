@@ -51,6 +51,14 @@ struct RoundedRectTextView: View {
 }
 
 
+struct RoundedTextView: View {
+    let text: String
+    var body: some View {
+        Text(text)
+    }
+}
+
+
 //Creating a PreviewView to see all the symbols in dark / light mode
 struct PreviewView: View {
     var body: some View {
@@ -60,6 +68,7 @@ struct PreviewView: View {
             RoundedImageViewFilled(systemName: "arrow.counterclockwise")
             RoundedImageViewFilled(systemName: "list.dash")
             RoundedRectTextView(text: "999")
+            RoundedTextView(text: "1")
         }
     }
 }

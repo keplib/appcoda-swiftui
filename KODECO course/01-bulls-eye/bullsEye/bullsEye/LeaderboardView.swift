@@ -10,6 +10,7 @@ import SwiftUI
 struct LeaderboardView: View {
     var body: some View {
         RowView(index: 1, score: 10, date:Date())
+        
     }
 }
 
@@ -19,8 +20,17 @@ struct RowView: View {
     let date: Date
     
     var body: some View {
-        Slider(value: .constant(50.0))
-            .padding()
+        HStack {
+            Slider(value: .constant(50.0))
+                .padding()
+        }
+        .background(
+            RoundedRectangle(cornerRadius: .infinity )
+                .strokeBorder(Color("LeaderboardRowColor"), lineWidth: Constants.General.strokeWidth)
+        )
+        .padding(.leading)
+        .padding(.trailing)
+        .frame(maxWidth: 480)
     }
 }
 
