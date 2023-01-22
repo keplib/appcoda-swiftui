@@ -21,8 +21,13 @@ struct RowView: View {
     
     var body: some View {
         HStack {
-            Slider(value: .constant(50.0))
-                .padding()
+            RoundedTextView(text: String(index))
+            Spacer()
+            ScoreText(score: score)
+                .frame(width: Constants.LeaderBoard.leaderboardScoreColWidth)
+            Spacer()
+            DateText(date: date)
+                .frame(width: Constants.LeaderBoard.leaderboardDateColWidth)
         }
         .background(
             RoundedRectangle(cornerRadius: .infinity )
@@ -30,7 +35,7 @@ struct RowView: View {
         )
         .padding(.leading)
         .padding(.trailing)
-        .frame(maxWidth: 480)
+        .frame(maxWidth: Constants.LeaderBoard.leaderboardMaxRowWidth)
     }
 }
 
